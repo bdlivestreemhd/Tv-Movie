@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TiSPORTS - WATCH MOVIES DRAMAS FOR FREE</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+  padding-bottom: 50px; /* Footer এর উচ্চতা অনুযায়ী এডজাস্ট করুন */
+      font-family: 'Open Sans', sans-serif;
+      background-color: #111827;
+      color: white;
+    }
+    .glow-text {
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+    .thumbnail {
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+    .thumbnail:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+    .poster {
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      width: auto;
+      height: auto;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      flex-shrink: 0;
+    }
+    .poster:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+    .carousel-fade {
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+  <!-- Login Screen -->
+  <div id="loginScreen" class="fixed inset-0 bg-black z-50 flex flex-col justify-center items-center space-y-4 p-4 hidden">
+    <h2 class="text-2xl font-bold glow-text">Create Your Account</h2>
+    <input id="nameInput" type="text" placeholder="Enter Your Name" class="p-2 w-64 rounded text-black">
+    <input id="imageInput" type="file" accept="image/*" class="p-2 w-64">
+    <button onclick="submitLogin()" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-700 transition-all animate-bounce">Submit</button>
+  </div>
+
+  <!-- Header -->
+  <header class="flex items-center justify-between p-4 bg-gray-800 shadow-md">
+    <div class="flex items-center space-x-3">
+      <img id="userImage" alt="Logo" class="h-10 w-10 rounded-full" src="" />
+      <i class="fas fa-tv text-white text-xl"></i>
+    </div>
+    <i class="fas fa-search text-white text-xl"></i>
+  </header>
+
+  <!-- Carousel -->
+  <div id="carousel" class="mb-4 h-48 overflow-hidden relative">
+    <img id="carouselImage" class="w-full h-48 object-cover carousel-fade" src="https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/2b5dd560-f31e-43e3-9333-efb3fc134125/09848f73-591b-4ad6-92cc-1dffbe77c2d9.jpg?width=2400" alt="Featured Image">
+  </div>
+
+  <!-- Main -->
+  <main class="p-4">
+    <!-- Latest Natok Section -->
+    <section class="mb-8">
+      <h2 class="text-xl font-bold mb-4 glow-text">FREE NATOK</h2>
+      <div class="grid grid-cols-2 gap-4">
+        <a href="th1.html"><img class="thumbnail" src="https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/2b5dd560-f31e-43e3-9333-efb3fc134125/09848f73-591b-4ad6-92cc-1dffbe77c2d9.jpg?width=2400" alt="Natok 1"></a>
+        <a href="th2.html"><img class="thumbnail" src="https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/6d352160-83cc-46c1-ad6e-1fde273655da/fa7807e8-c80c-46aa-a844-bf1df54659b3.jpg?width=2400" alt="Natok 2"></a>
+        <a href="th3.html"><img class="thumbnail" src="https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/ec28708b-7ac0-4c5f-b761-92a48eba2788/e5ab7270-e329-4bc6-8a62-f9c088ee9bdd.jpg?width=2400" alt="Natok 3"></a>
+        <a href="th4.html"><img class="thumbnail" src="https://storage.googleapis.com/a1aa/image/18ZHzUak3P5WI9oPclyR9_zBVjVQhxUSAeCYYSKKp7I.jpg" alt="Natok 4"></a>
+      </div>
+    </section>
+
+    <!-- Free Movie Posters -->
+    <section class="mb-8">
+      <h2 class="text-xl font-bold mb-4 glow-text">FREE MOVIE</h2>
+      <div class="flex space-x-4 overflow-x-auto pb-2">
+<a href="m4.html"><img class="poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBccdeUWQ8MB1cuab5IHLZPpacRE9ISgxsriQVCcYiTBYbDb7uW5lHMCY&s=10" alt="Movie 4"></a>
+        <a href="m1.html"><img class="poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYLcmkRYJ1qz6Y9UFWtB5PrdcqgocI__FhaTa9agw50yUcO879Tn5qc_Q&s=10" alt="Movie 1"></a>
+        <a href="m2.html"><img class="poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa4g7IFHvIl4VlrjmbmMKldUbjOevoxtJ5ZD3pYpxeepLC0uBzM2dvdH0&s=10" alt="Movie 2"></a>
+        <a href="m3.html"><img class="poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBccdeUWQ8MB1cuab5IHLZPpacRE9ISgxsriQVCcYiTBYbDb7uW5lHMCY&s=10" alt="Movie 3"></a>
+        <a href="https://taohid21.github.io/Ti-SPORTS---Watch-Movies-Free/m1.html"><img class="poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYLcmkRYJ1qz6Y9UFWtB5PrdcqgocI__FhaTa9agw50yUcO879Tn5qc_Q&s=10" alt="Movie 1"></a>
+<a href="1.html"><img class="poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYLcmkRYJ1qz6Y9UFWtB5PrdcqgocI__FhaTa9agw50yUcO879Tn5qc_Q&s=10" alt="Movie 1"></a>
+<a href="2.html"><img class="poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYLcmkRYJ1qz6Y9UFWtB5PrdcqgocI__FhaTa9agw50yUcO879Tn5qc_Q&s=10" alt="Movie 1"></a>
+<a href="3.html"><img class="poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYLcmkRYJ1qz6Y9UFWtB5PrdcqgocI__FhaTa9agw50yUcO879Tn5qc_Q&s=10" alt="Movie 1"></a>
+<a href="4.html"><img class="poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYLcmkRYJ1qz6Y9UFWtB5PrdcqgocI__FhaTa9agw50yUcO879Tn5qc_Q&s=10" alt="Movie 1"></a><a href="5.html"><img class="poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYLcmkRYJ1qz6Y9UFWtB5PrdcqgocI__FhaTa9agw50yUcO879Tn5qc_Q&s=10" alt="Movie 1"></a>
+
+
+
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 left-0 right-0 bg-gray-800 p-4">
+    <div class="flex justify-around">
+      <a href="index.html" class="flex flex-col items-center" id="homeBtn">
+        <i class="fas fa-home text-2xl"></i>
+        <span>Home</span>
+      </a>
+      <a href="shorts.html" class="flex flex-col items-center" id="shortsBtn">
+        <i class="fas fa-play text-2xl"></i>
+        <span>Shorts</span>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Popup Container -->
+<div id="palestine-popup" class="popup-overlay">
+  <div class="popup-box">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Palestine.svg" class="popup-img" alt="Palestine Flag">
+    <h2 class="popup-question">Are You Support Palestine?</h2>
+    <div class="popup-buttons">
+      <button onclick="handleYes()" class="btn-yes">Yes</button>
+      <button onclick="handleNo()" class="btn-no">No</button>
+    </div>
+    <div id="congrats" class="congrats-message">Thank you for supporting Palestine!</div>
+  </div>
+</div>
+
+<style>
+/* Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Popup Box */
+.popup-box {
+  background: #fff;
+  padding: 30px;
+  max-width: 400px;
+  width: 90%;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  animation: popup-in 0.5s ease-out;
+}
+
+/* Image */
+.popup-img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+/* Question */
+.popup-question {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Buttons */
+.popup-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-yes, .btn-no {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-yes {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-no {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-yes:hover {
+  background-color: #218838;
+}
+
+.btn-no:hover {
+  background-color: #c82333;
+}
+
+/* Congrats Message */
+.congrats-message {
+  display: none;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #28a745;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Animations */
+@keyframes popup-in {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+</style>
+
+<script>
+// Check if user already answered
+const userResponse = localStorage.getItem('palestineSupport');
+if (userResponse === 'no') {
+  window.location.href = "https://example.com"; // Change to your redirect URL
+} else if (userResponse === 'yes') {
+  document.getElementById('palestine-popup').style.display = 'none';
+}
+
+// Yes handler
+function handleYes() {
+  localStorage.setItem('palestineSupport', 'yes');
+  document.querySelector('.popup-buttons').style.display = 'none';
+  document.getElementById('congrats').style.display = 'block';
+  setTimeout(() => {
+    document.getElementById('palestine-popup').style.display = 'none';
+  }, 2500);
+}
+
+// No handler
+function handleNo() {
+  localStorage.setItem('palestineSupport', 'no');
+  window.location.href = "https://example.com"; // Change to your redirect URL
+}
+    // Carousel
+    const images = [
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj6TQ38RucPFsUYdfylFLQ2jM0cAFNsBVvDdEQYVTRmRmtmKQChfPzFKLl&s=10bdd.jpg?width=2400',
+      'https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/6d352160-83cc-46c1-ad6e-1fde273655da/fa7807e8-c80c-46aa-a844-bf1df54659b3.jpg?width=2400',
+      'https://cdn.bongo-solutions.com/919f93a7-400e-4149-a70d-204beb589074/content/2b5dd560-f31e-43e3-9333-efb3fc134125/09848f73-591b-4ad6-92cc-1dffbe77c2d9.jpg?width=2400'
+    ];
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % images.length;
+      const carousel = document.getElementById('carouselImage');
+      carousel.classList.remove('carousel-fade');
+      void carousel.offsetWidth;
+      carousel.src = images[index];
+      carousel.classList.add('carousel-fade');
+    }, 3000);
+
+    // Login
+    const loginScreen = document.getElementById('loginScreen');
+    const storedName = localStorage.getItem('userName');
+    const storedImage = localStorage.getItem('userImage');
+    const userImage = document.getElementById('userImage');
+
+    if (!storedName || !storedImage) {
+      loginScreen.classList.remove('hidden');
+    } else {
+      userImage.src = storedImage;
+    }
+
+    function submitLogin() {
+      const name = document.getElementById('nameInput').value;
+      const image = document.getElementById('imageInput').files[0];
+      if (name && image) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          localStorage.setItem('userName', name);
+          localStorage.setItem('userImage', e.target.result);
+          userImage.src = e.target.result;
+          loginScreen.classList.add('hidden');
+        };
+        reader.readAsDataURL(image);
+      } else {
+        alert('Please enter name and select an image.');
+      }
+    }
+
+    // Footer active state
+    const isShortsPage = window.location.href.includes('shorts.html');
+    const homeBtn = document.getElementById('homeBtn');
+    const shortsBtn = document.getElementById('shortsBtn');
+
+    if (isShortsPage) {
+      shortsBtn.querySelector('i').classList.add('text-red-500');
+      shortsBtn.querySelector('span').classList.add('text-red-500');
+      homeBtn.querySelector('i').classList.remove('text-red-500');
+      homeBtn.querySelector('i').classList.add('text-gray-500');
+      homeBtn.querySelector('span').classList.remove('text-red-500');
+      homeBtn.querySelector('span').classList.add('text-gray-500');
+    } else {
+      homeBtn.querySelector('i').classList.add('text-red-500');
+      homeBtn.querySelector('span').classList.add('text-red-500');
+      shortsBtn.querySelector('i').classList.add('text-gray-500');
+      shortsBtn.querySelector('span').classList.add('text-gray-500');
+    }
+  </script>
+</body>
+        </html>

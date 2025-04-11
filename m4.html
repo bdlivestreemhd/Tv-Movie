@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Story</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0e0e0e;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-x: hidden;
+    }
+    .player-container {
+      width: 100%;
+      max-width: 100%;
+      height: 500px;
+      margin-top: -150px; /* উপরে আনা হলো */
+      margin-bottom: 30px;
+      position: relative;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+    }
+    .movie-description {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      color: #f1c40f;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 500px;
+      text-align: left;
+      line-height: 1.5;
+      border-left: 2px solid #f1c40f;
+      position: absolute;
+      top: 370px;
+      left: 20px;
+      z-index: 2;
+    }
+    .movie-description h3 {
+      margin-top: 0;
+      font-size: 22px;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Video Player Container -->
+  <div class="player-container">
+    <iframe src="https://vod.bongobd.com/vod/vod/919f93a7400e4149a70d204beb589074/8/f/8fc9a07aca9f492885721d1e8fdc0994/9b27f32e54de45f8bb73dfb37606ee9a_x264_1080p_4500k.m3u8" frameborder="0" allowfullscreen></iframe>
+    <div class="movie-description">
+      <h3>Movie Title : Love Story</h3>
+      <p>
+        Savyasachi
+Love Story
+2021 • Movie • 02 Hr 30 Min 33 Sec</br>
+A Christian Zumba instructor falls for a dreamy upper-caste Hindu girl, but their love faces a daunting challenge: a deep-rooted caste divide. As they pursue happiness, will love be enough to bridge the gap?
+      </p>
+    </div>
+  </div>
+</body>
+</html>

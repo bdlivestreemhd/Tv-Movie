@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shorts | Ti Sports</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      scroll-snap-type: y mandatory;
+    }
+    .short {
+      scroll-snap-align: start;
+    }
+    .liked i {
+      color: #ef4444;
+      animation: pop 0.3s ease;
+    }
+    .disliked i {
+      color: #3b82f6;
+      animation: pop 0.3s ease;
+    }
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.4); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="bg-black text-white overflow-y-scroll h-screen">
+
+  <div id="videoContainer" class="h-screen w-screen snap-y snap-mandatory overflow-y-scroll relative"></div>
+
+  <script>
+    const videos = [
+      {
+        url: "https://www.googleapis.com/drive/v3/files/1-7SFo83dampYdIEJZwh2QaobYWCDjNQz?alt=media&key=AIzaSyDJGujYqxBtgIoxzyHf3Noe-fluBcKemeM",
+        title: "A A RREMI • MOVIE 2017 • WATCH NOW Ti SPORTS"
+      },
+      {
+        url: "https://www.googleapis.com/drive/v3/files/1-_6tNke_WYIAq6VGfDpC2IwU-HmRUdMv?alt=media&key=AIzaSyDJGujYqxBtgIoxzyHf3Noe-fluBcKemeM",
+        title: "PLEASE SUPPORT PALESTINE 🇸🇩"
+      }
+    ];
+
+    const container = document.getElementById("videoContainer");
+
+    videos.forEach((video, index) => {
+      const section = document.createElement("section");
+      section.className = "short relative h-screen w-full flex items-center justify-center flex-col";
+
+      const videoEl = document.createElement("video");
+      videoEl.src = video.url;
+      videoEl.controls = false;
+      videoEl.autoplay = index === 0;
+      videoEl.muted = true;
+      videoEl.loop = true;
+      videoEl.className = "h-full w-full object-cover";
+
+      const overlay = document.createElement("div");
+      overlay.className = "absolute bottom-28 left-0 right-0 px-4 z-30";
+      overlay.innerHTML = `
+        <h2 class="text-xl font-bold mb-2">${video.title}</h2>
+      `;
+
+      const actions = document.createElement("div");
+      actions.className = "absolute right-4 bottom-24 space-y-6 text-center text-white text-2xl z-50";
+      actions.innerHTML = `
+        <button class="likeBtn transition duration-200 ease-in-out hover:scale-110"><i class="fas fa-thumbs-up"></i></button><br>
+        <button class="dislikeBtn transition duration-200 ease-in-out hover:scale-110"><i class="fas fa-thumbs-down"></i></button><br>
+        <button class="transition duration-200 ease-in-out hover:scale-110"><i class="fas fa-comment"></i></button><br>
+        <button class="transition duration-200 ease-in-out hover:scale-110"><i class="fas fa-share"></i></button>
+      `;
+
+      // FAB for unmute
+      const fab = document.createElement("button");
+      fab.className = "fab absolute top-4 right-4 z-50 bg-white text-black p-3 rounded-full shadow-lg text-xl";
+      fab.innerHTML = `<i class="fas fa-volume-mute"></i>`;
+
+      // FAB click event
+      fab.addEventListener("click", () => {
+        videoEl.muted = false;
+        fab.remove(); // hide FAB
+      });
+
+      section.appendChild(videoEl);
+      section.appendChild(fab);
+      section.appendChild(overlay);
+      section.appendChild(actions);
+      container.appendChild(section);
+    });
+
+    // Auto play/pause on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target.querySelector("video");
+        if (entry.isIntersecting) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.8 });
+
+    setTimeout(() => {
+      document.querySelectorAll(".short").forEach(section => {
+        observer.observe(section);
+      });
+    }, 100);
+
+    // Like / Dislike logic
+    document.addEventListener("click", (e) => {
+      if (e.target.closest(".likeBtn")) {
+        const likeBtn = e.target.closest(".likeBtn");
+        likeBtn.classList.toggle("liked");
+        likeBtn.nextElementSibling.classList.remove("disliked");
+      }
+      if (e.target.closest(".dislikeBtn")) {
+        const dislikeBtn = e.target.closest(".dislikeBtn");
+        dislikeBtn.classList.toggle("disliked");
+        dislikeBtn.previousElementSibling.classList.remove("liked");
+      }
+    });
+  </script>
+
+</body>
+</html>

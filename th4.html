@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPL PLAYER | TI SPORTS</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: #111;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00BFFF;
+    }
+
+    header h1 span {
+      color: #32CD32;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 15px;
+      color: #FF0000;
+      animation: pulse 1.5s infinite;
+    }
+
+    .live-badge .dot {
+      width: 10px;
+      height: 10px;
+      background-color: #FF0000;
+      border-radius: 50%;
+      margin-right: 6px;
+      animation: blink 1s infinite alternate;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      100% { opacity: 0.2; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .video-container {
+      width: 95%;
+      max-width: 800px;
+      margin: 20px auto 10px;
+      background-color: #111;
+      padding: 10px;
+      border-radius: 12px;
+    }
+
+    video {
+      width: 100%;
+      height: 230px;
+      border-radius: 10px;
+      background: #000;
+    }
+
+    .server-buttons {
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .server-buttons button {
+      padding: 10px 18px;
+      margin: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      border: 2px solid #1E90FF;
+      background-color: transparent;
+      color: #1E90FF;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .server-buttons button:hover {
+      background-color: #1E90FF;
+      color: #fff;
+    }
+
+    .description {
+      text-align: center;
+      max-width: 800px;
+      margin: 20px auto;
+      font-size: 16px;
+      line-height: 1.8;
+      padding: 0 15px;
+      color: #dcdcdc;
+      background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ti <span>noz</span></h1>
+    <div class="live-badge"><div class="dot"></div>LIVE</div>
+  </header>
+
+  <div class="video-container">
+    <video id="player" controls autoplay></video>
+  </div>
+
+  <div class="server-buttons">
+    <button onclick="changeServer(1)">SERVER 1</button>
+    <button onclick="changeServer(2)">SERVER 2</button>
+    <button onclick="changeServer(3)">SERVER 3</button>
+  </div>
+
+  <div class="description">
+    <p>
+      You are now watching the <strong>TINoz</strong> premium live streaming player dedicated to the <strong>Wwe (Fraidy Fight)</strong> — the most exciting boxing tournament in the world.
+      Our advanced streaming technology supports multiple formats (M3U8, MPD, MP4, etc.) and ensures lightning-fast server switching, giving you the smoothest viewing experience possible.
+      This stylish and fully responsive player adapts seamlessly to both mobile and desktop devices, offering a modern, high-quality IPL live experience — anytime, anywhere.
+    </p>
+  </div>
+
+  <script>
+    const servers = {
+      1: "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/66b66b9e14a2bb000872f606/3321280/playlist.m3u8?terminate=false&sid=3616fbed-aaac-4962-9c37-d32e9278452e&deviceDNT=0&deviceModel=web&deviceVersion=unknown&serverSideAds=true&appName=web&deviceId=d02df0d0-8952-11ef-8353-f70668e6a0ea&appVersion=unknown&deviceType=web&deviceMake=Chrome",
+      2: "http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/66b66b9e14a2bb000872f606/master.m3u8?advertisingId=&appName=web&appVersion=unknown&appStoreUrl=&architecture=&buildVersion=&clientTime=0&deviceDNT=0&deviceId=d02df0d0-8952-11ef-8353-f70668e6a0ea&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&sid=3616fbed-aaac-4962-9c37-d32e9278452e&userId=&serverSideAds=true",
+      3: "https://abkvfuwaaaaaaaamlk56gfiik2ug5.otte.live.cf.ww.aiv-cdn.net/gru-nitro/live/clients/dash-sd/enc/vodez4h7i9/out/v1/e929aee089864ce98e4c335d19f41e16/cenc-sd.mpd"
+    };
+
+    function changeServer(serverNumber) {
+      const video = document.getElementById('player');
+      const url = servers[serverNumber];
+      video.pause();
+      video.src = '';
+      video.load();
+
+      if (url.endsWith('.m3u8')) {
+        if (Hls.isSupported()) {
+          const hls = new Hls();
+          hls.loadSource(url);
+          hls.attachMedia(video);
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = url;
+        }
+      } else if (url.endsWith('.mpd')) {
+        const player = dashjs.MediaPlayer().create();
+        player.initialize(video, url, true);
+      } else {
+        video.src = url;
+      }
+
+      video.play();
+    }
+
+    // Auto-load SERVER 1
+    window.onload = () => changeServer(1);
+  </script>
+</body>
+</html>
